@@ -91,6 +91,10 @@ def main():
                                        'Microsoft YaHei', 'Arial Unicode MS']  # 用来正常显示中文标签
     plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
+    # Ensure imgs directory exists
+    imgs_dir = "imgs"
+    os.makedirs(imgs_dir, exist_ok=True)
+
     # 3. 绘制结果
     print("Plotting results...")
     plt.figure(figsize=(12, 6))
@@ -111,7 +115,7 @@ def main():
     plt.xticks(df['hour'])
 
     # 保存图表
-    output_img = "prediction_plot.png"
+    output_img = os.path.join(imgs_dir, "prediction_plot.png")
     plt.savefig(output_img)
     print(f"Plot saved to {output_img}")
 
@@ -149,7 +153,7 @@ def main():
     plt.tight_layout()
 
     # 保存天气图表
-    weather_img = "weather_plot.png"
+    weather_img = os.path.join(imgs_dir, "weather_plot.png")
     plt.savefig(weather_img)
     print(f"Weather plot saved to {weather_img}")
 
